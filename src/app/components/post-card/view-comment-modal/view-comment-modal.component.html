@@ -1,0 +1,59 @@
+<div style="position: relative">
+  <div style="margin-bottom: 20px">
+    <h1>All Comments</h1>
+    <button
+      *ngIf="exitBool"
+      (click)="closeDialog()"
+      style="border: 0; position: absolute; right: 0%; top: 0%"
+      mat-icon-button
+      aria-label="close dialog"
+      mat-dialog-close
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div *ngFor="let comment of comments; let i = index" style="margin-bottom: 1rem; margin-top: 1rem; position: relative">
+    <span *ngIf="i == 0"> </span>
+    <div style="position: relative" class="comment-cont">
+      <div class="img-cont">
+        <img
+          class="profImage"
+          src="{{ comment.author.profileImageUrl }}"
+          *ngIf="comment.author.profileImageUrl"
+          alt="the user's profile picture"
+        />
+        <img
+          class="profImage"
+          src="/assets/grey_profile_img.jpg"
+          *ngIf="!comment.author.profileImageUrl"
+          alt="the user's default profile picture"
+        />
+      </div>
+
+      <!-- <div style="top: 0%; left: 10%"> -->
+      <div class="username-cont">
+        <div class="username" style="font-weight: 550; cursor: pointer" (click)="onProfileClick(comment.author.username)">
+          {{ comment.author.username }}
+        </div>
+        <div class="timestamp">
+          <span style="top: 50%; left: 10%; color: grey; font-size: 10px">{{ timestamps[i] }}</span>
+        </div>
+      </div>
+
+      <div class="message-cont">
+        <span style="left: 100; overflow-wrap: anywhere"> {{ comment.message | slice: 0:messageLimits[i] }}</span>
+        <span
+          style="color: grey; cursor: pointer"
+          *ngIf="comment.message.length > 125 && messageLimits[i] != 255"
+          (click)="showMoreMessage(i)"
+        >
+          more...</span
+        >
+        <span style="color: grey; cursor: pointer" *ngIf="messageLimits[i] == 255" (click)="showLessMessage(i)"> less...</span>
+      </div>
+
+      <!-- </div> -->
+      <br />
+    </div>
+  </div>
+</div>

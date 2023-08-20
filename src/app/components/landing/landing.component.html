@@ -1,0 +1,14 @@
+<app-navbar (searchEvent)="searchPost($event)"></app-navbar>
+<div
+  class="post-scroll"
+  infiniteScroll
+  [infiniteScrollDistance]="0"
+  [infiniteScrollThrottle]="50"
+  [scrollWindow]="false"
+  (scrolled)="onScroll()"
+>
+  <div *ngFor="let post of posts" class="post" [ngClass]="post.imageUrl === null ? 'null-image' : ''">
+    <app-post *ngIf="post.imageUrl !== null" [post]="post" [user]="user"></app-post>
+  </div>
+  <div *ngIf="posts.length == 0" class="no-post">No Posts Found...</div>
+</div>

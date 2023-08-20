@@ -1,0 +1,199 @@
+.btn {
+  border-radius: 2px;
+  height: 45px;
+  width: 118px;
+  background-color: var(--blueBtn);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  border: none;
+}
+
+.buttons {
+  margin-top: 45px;
+  margin-bottom: 50px;
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.register {
+  text-decoration: none;
+  color: var(--blackText);
+  padding-right: 45px;
+}
+
+.form-control::placeholder {
+  color: var(--placeHolder);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  opacity: 1;
+}
+
+.register:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.valConteiner {
+  width: 100%;
+}
+
+.validator {
+  float: left;
+  width: 100%;
+  color: var(--error);
+  font-size: small;
+  padding-top: 10px;
+}
+
+.regLog {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--background);
+}
+
+.reg-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--postCard);
+  border: 1px solid var(--formBorder);
+  padding: 30px 20px 30px 20px;
+  width: 615px;
+  height: 590px;
+  border-radius: 2px;
+  margin: 0 20px;
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+
+.heading-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+.logo {
+  height: 55px;
+  width: 55px;
+}
+.line {
+  border-left: 1px solid var(--formHeading);
+  height: 40px;
+  margin: 0px 20px 0 20px;
+}
+.form-heading {
+  font-family: "Billabong", sans-serif;
+  color: var(--formHeading);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+}
+
+.inp {
+  width: 100%;
+  margin-left: 55px;
+}
+
+.userPassVali {
+  margin-left: 55px;
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.form-input {
+  width: 90%;
+  border: 1px solid var(--formBorder);
+  margin: 0px 0 40px 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  height: 60px;
+  background-color: var(--background);
+  padding: 0px 12px 0px 12px;
+  border-radius: 3px;
+}
+
+.form-input::placeholder {
+  color: var(--placeHolder);
+}
+
+.btn-cont {
+  width: 90%;
+  text-align: right;
+  padding-top: 50px;
+}
+.form-input-btn {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  color: var(--form);
+  background: var(--blueBtn);
+  border-radius: 3px;
+  padding: 15px 26px;
+  cursor: pointer;
+  border: none;
+}
+.form-error {
+  display: flex;
+  justify-content: start;
+  font-size: 15px;
+  color: var(--error);
+  margin-top: -30px;
+  padding-bottom: 15px;
+  width: 90%;
+  font-weight: 400;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  position: relative;
+  bottom: 5px;
+}
+.form-error-invalid {
+  display: flex;
+  justify-content: start;
+  font-size: 15px;
+  color: var(--error);
+  margin-top: -30px;
+  padding-bottom: 3px;
+  width: 90%;
+  font-weight: 400;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  line-height: 100%;
+  letter-spacing: 0.025em;
+  position: relative;
+  bottom: 5px;
+}

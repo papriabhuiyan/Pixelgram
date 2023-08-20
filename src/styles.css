@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  color: var(--blackText);
+}
+
+*:not([class^="cdk"], [class^="mat"]) {
+  transition: color, background-color, border-color, var(--transition-duration);
+}
+
+@media screen {
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.backdrop {
+  background-color: #bbbbbbf2;
+  backdrop-filter: blur(4px);
+}
+
+.modal-style .mat-dialog-container {
+  background-color: var(--postCard);
+}
+
+.mat-hint {
+  color: var(--blackText);
+}
+.mat-select-panel {
+  background: var(--postCard);
+}
+:root {
+  --blackText: #000;
+  --background: #fafafa;
+  --blueBtn: #5197e9;
+  --postImageContainer: #292929;
+  --postCard: white;
+  --formHeading: #262626;
+  --error: #d13a3a;
+  --placeHolder: #e6e6e6;
+  --postCardLabels: gray;
+  --postCardBorder: lightgray;
+  --form: #fffefe;
+  --formBorder: #e4e4e4;
+  --cancel: #5751e9;
+  --darkGray: #6b7377;
+  --searchFilter: #999999;
+  --searchBorder: #dbdbdb;
+  --transition-duration: 0.4s;
+  --navIcon: grayscale(100);
+  --searchDropdown: #e0e0e0;
+  --profileIcon: #0000002f;
+}
+
+.dark-theme {
+  --blackText: #eeeeee;
+  --background: #191919;
+  --blueBtn: #5197e9;
+  --postImageContainer: #000;
+  --postCard: #2a2a2a;
+  --formHeading: #eeeeee;
+  --error: #d13a3a;
+  --placeHolder: #e6e6e6;
+  --postCardLabels: #eeeeee;
+  --postCardBorder: #2a2a2a;
+  --form: #fffefe;
+  --formBorder: #2a2a2a;
+  --cancel: #5751e9;
+  --darkGray: #6b7377;
+  --searchFilter: #e6e6e6;
+  --searchBorder: #2a2a2a;
+  --transition-duration: 0.4s;
+  --navIcon: brightness(0) invert(1);
+  --searchDropdown: #191919;
+  --profileIcon: #6b737785;
+}
+
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}
+.mat-dialog-container::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.mat-dialog-container::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: darkgray;
+}

@@ -1,0 +1,34 @@
+<div class="edit-modal">
+  <span class="header">
+    <h1>Edit Post Description</h1>
+    <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+  </span>
+
+  <div class="edit-form">
+    <mat-form-field class="text-area-container" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="postUpload.message"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="7"
+        cdkAutosizeMaxRows="7"
+        maxlength="255"
+        minlength="1"
+        (change)="onInputChange = !onInputChange"
+      ></textarea>
+      <mat-hint align="end">{{ postUpload.message.length }}/255</mat-hint>
+      <mat-hint
+        align="start"
+        style="color: red; font-size: 14px; margin-left: -5px"
+        *ngIf="onInputChange && postUpload.message.length < 1"
+        >*Description cannot be blank</mat-hint
+      >
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-button color="warn" id="submit" (click)="closeDialog()">Cancel</button>
+      <button class="btn btn-primary btn-lg btn-block regLog" id="submit" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+</div>

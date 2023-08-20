@@ -1,0 +1,19 @@
+<div *ngIf="hasElements">
+  <span style="font-weight: 550; cursor: pointer" (click)="onProfileClick(firstComment.author.username)">{{
+    firstComment.author.username
+  }}</span>
+  <span> {{ firstComment.message | slice: 0:messageLimit }}</span>
+  <span
+    style="color: grey; cursor: pointer"
+    *ngIf="firstComment.message.length > 50 && messageLimit != 255"
+    (click)="showMoreMessage()"
+  >
+    more...</span
+  >
+</div>
+<span *ngIf="userService.getTokenFromLocalStorage()" style="color: grey; cursor: pointer" (click)="openDialog()"
+  >Add Comment</span
+>
+<span *ngIf="viewBool && userService.getTokenFromLocalStorage()" style="color: grey; font-size: large"> · </span>
+<span *ngIf="viewBool" style="color: grey; cursor: pointer" (click)="openCommentDialog()">View more comments</span>
+<div style="color: grey">{{ timestamp }} ago</div>

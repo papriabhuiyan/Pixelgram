@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="form-container">
+  <div class="reg-card">
+    <div class="heading-cont">
+      <img class="logo" src="../../../../assets/pixelgram_logo.png" alt="" /><span class="line"></span>
+      <div class="form-heading">Register</div>
+    </div>
+    <form class="reg-form" [formGroup]="regForm" (ngSubmit)="submit()" data-test-id="reg-form">
+      <input placeholder="Username..." formControlName="username" type="text" class="form-input" data-test-id="username" (focus)="setFalse()"/>
+      <span *ngIf="regForm.controls.username.errors?.['required'] && submitted" class="form-error" data-test-id="password">
+        *&nbsp;Username is Required
+      </span>
+      <span *ngIf="found" class="form-error" data-test-id="password"> *&nbsp;Username already taken </span>
+      <input placeholder="Password..." formControlName="password" type="password" class="form-input" />
+      <span *ngIf="regForm.controls.password.errors?.['required'] && submitted" class="form-error">
+        *&nbsp;Password is Required
+      </span>
+      <div class="btn-cont"><button type="submit" class="form-input-btn">Register</button></div>
+    </form>
+  </div>
+</div>

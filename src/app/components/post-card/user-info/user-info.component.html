@@ -1,0 +1,19 @@
+<div class="poster-info-container">
+  <div class="poster-info" (click)="onProfileClick(post.username)">
+    <img class="profImage" src="{{ post.profileImageUrl }}" *ngIf="post.profileImageUrl" alt="the user's profile picture" />
+    <img
+      class="profImage"
+      src="/assets/grey_profile_img.jpg"
+      *ngIf="!post.profileImageUrl"
+      alt="the user's default profile picture"
+    />
+    <span id="username-label">{{ post.username }}</span>
+  </div>
+
+  <button class="ellipsis" *ngIf="shouldDisplayMenu()" mat-button [matMenuTriggerFor]="menu">...</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onDelete()">Delete Post</button>
+    <button mat-menu-item (click)="openSpecificDialog()">Edit Post</button>
+  </mat-menu>
+</div>
+ 

@@ -1,0 +1,25 @@
+<button class="close" (click)="closeDialog()" mat-icon-button aria-label="close dialog" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+</button>
+<div class="content">
+    <h1 *ngIf="following">Following</h1>
+    <h1 *ngIf="!following">Followers</h1>
+    <div class="no-fo" *ngIf="!followLength.followLength">
+        <p *ngIf="following">Not Following</p>
+        <p *ngIf="!following">No Followers</p>
+    </div>
+    <div class="follower-container">
+        <div *ngFor="let follower of follower">
+            <div class="followers" (click)="profile(follower.username)">
+                <img *ngIf="follower.profileImageUrl" class="profImage" alt="a user's profile picture" src={{follower.profileImageUrl}}>
+                <img (click)="profile(follower.username)"
+                    class="profImage"
+                    src="/assets/grey_profile_img.jpg"
+                    *ngIf="!follower.profileImageUrl"
+                    alt="the user's default profile picture"
+                />
+                <p class="username">{{ follower.username }}</p>
+            </div>
+        </div>
+    </div>
+</div>

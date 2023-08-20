@@ -1,0 +1,41 @@
+.profImage {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.poster-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+.poster-info {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  cursor: pointer;
+}
+#username-label {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.ellipsis {
+  border: none;
+  font-weight: bolder;
+  float: right;
+}
+
+::ng-deep .mat-menu-panel {
+  background-color: var(--postCard);
+}
+::ng-deep .mat-menu-content:not(:empty) {
+  background-color: var(--postCard);
+}
+::ng-deep button.mat-menu-item {
+  color: var(--blackText);
+}
+::ng-deep button.mat-menu-item:hover {
+  color: var(--bluBtn) !important;
+}

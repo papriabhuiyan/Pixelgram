@@ -1,0 +1,67 @@
+<div class="navbar">
+  <div class="logo-cont">
+    <a routerLink="/" class="navbar-brand">
+      <img src="../../../../assets/pixelgram_logo.png" alt="pixelgram logo" class="nav-img" />
+      <div class="vertLine"></div>
+      <p class="title">Pixelgram</p>
+    </a>
+
+    <div class="dark-mode">
+      <input type="checkbox" #toggle (click)="darkMode()" class="checkbox" id="toggleBtn" />
+      <label class="switch" for="toggleBtn">
+        <mat-icon class="icon-toggle moon">nightlight</mat-icon>
+        <mat-icon class="icon-toggle">sunny</mat-icon>
+        <div class="ball"></div>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="onHome" class="search-cont">
+    <input [(ngModel)]="userInput" (keyup)="search()" placeholder="Search" class="search" type="text" />
+    <div>
+      <mat-form-field>
+        <mat-select [(value)]="selected" disableOptionCentering>
+          <mat-option value="Username">Username</mat-option>
+          <mat-option value="Description">Description</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div *ngIf="!onHome" style="visibility: hidden" class="search-cont">
+    <input [(ngModel)]="userInput" (keyup)="search()" placeholder="Search" class="search" type="text" />
+    <div>
+      <mat-form-field>
+        <mat-select [(value)]="selected" disableOptionCentering>
+          <mat-option value="Username">Username</mat-option>
+          <mat-option value="Description">Description</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="navbar-items">
+    <a
+      ><img
+        *ngIf="isAuthBoolean"
+        class="create-post navbar-icon"
+        src="../../../../assets/add.svg"
+        alt="add post button"
+        [routerLink]="'/createPost'"
+    /></a>
+    <div>
+      <a mat-button [matMenuTriggerFor]="menu"
+        ><img
+          class="navbar-icon"
+          *ngIf="onHome || isAuthBoolean"
+          src="../../../../assets/personOutline.svg"
+          alt="sign in signout button"
+      /></a>
+      <mat-menu #menu="matMenu">
+        <button *ngIf="!isAuthBoolean" class="authButton" mat-menu-item (click)="reRoute()">Login</button>
+        <button *ngIf="isAuthBoolean"  class="authButton" mat-menu-item (click)="onProfileClick()">Profile</button>
+        <button *ngIf="isAuthBoolean" class="authButton" mat-menu-item (click)="reRoute()">Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

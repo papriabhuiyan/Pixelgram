@@ -1,0 +1,69 @@
+
+
+
+  <div class="post-popup">
+
+    <div class="tabs">
+      <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
+      <label for="tab1" class="tabs__label">Upload Image</label>
+      <div class="tabs__content">
+        <div class="uploadImage">
+          <input
+                id="uploadImage"
+                type="file"
+                accept="image/*"
+                (change)="selectFile($event)"
+                hidden
+            />
+          <div class="container" *ngIf="!preview">
+            <div class="icon"><mat-icon>add_photo_alternate</mat-icon></div>
+          </div>
+          <!-- Preview for upload post -->
+          <div *ngIf="preview && preview.length > 0" class="imagePreview">
+            <img [src]="preview" class="preview" alt="" />
+          </div>     
+
+          <div class="choose-image-button-container">
+              <label class="btn btn-primary uploadBtn" for="uploadImage">Upload Image</label>
+      </div>
+  </div>
+      </div>
+      <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
+      <label for="tab2" class="tabs__label">Take Photo</label>
+      <div class="tabs__content">
+        <div class="video-container">
+          <video
+            [class.show]="!isCaptured"
+            [class.hide]="isCaptured"
+            #video
+            id="video"
+            [width]="WIDTH"
+            [height]="HEIGHT"
+            autoplay
+          ></video>
+
+          <canvas
+            [class.show]="isCaptured"
+            [hidden]="!isCaptured"
+            #canvas
+            id="canvas"
+            [width]="WIDTH"
+            [height]="HEIGHT"
+          ></canvas>
+     </div>
+          <div class="snap-container">
+            <button class="btn btn-primary snapBtn" *ngIf="!isCaptured" (click)="capture()">
+              Snap Photo
+            </button>
+            <button class="btn btn-danger removeBtn" *ngIf="isCaptured" (click)="removeCurrent()">Take Another</button>
+          </div>
+
+      </div>
+    </div>
+<!-- bottom buttons -->
+  <div class="buttons">
+      <button class="cancel btn-primary text-light btn-block uploadPost" (click)="onCancel()"> Cancel </button>
+      <button class="createPostBtn text-light btn-primary btn-lg btn-block uploadPost" (click)="onSubmit()">Submit</button>
+  </div>
+
+

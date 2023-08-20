@@ -1,0 +1,102 @@
+.edit-modal {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10%;
+  overflow: hidden;
+}
+
+.header {
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.close-icon {
+  cursor: pointer;
+}
+
+.profile-edit {
+  display: flex;
+  flex-direction: column;
+}
+.image-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.edit-image {
+  text-align: center;
+}
+.info-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.camera-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transformable {
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.profile-image-small {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: solid 2px #5197e9;
+  object-fit: cover;
+}
+.profile-image-big {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 100%;
+  border: solid 2px #5197e9;
+  object-fit: cover;
+}
+
+.mat-stroked-button:not(.mat-button-disabled) {
+  border-color: var(--profileIcon);
+}
+.mat-divider {
+  border-top-color: var(--profileIcon);
+}
+.btn {
+  border-radius: 2px;
+  height: 45px;
+  width: 118px;
+  background-color: var(--blueBtn);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  border: none;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-hint {
+  color: var(--blackText);
+}
+
+:host ::ng-deep .mat-form-field-underline {
+  background-color: var(--profileIcon) !important;
+}
+:host ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: var(--blueBtn) !important;
+}
+
+@media screen and (max-width: 550px) {
+  .camera-controls {
+    flex-direction: row;
+  }
+  .image-container {
+    flex-direction: column;
+  }
+}

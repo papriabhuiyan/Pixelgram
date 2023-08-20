@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<div class="container-profile">
+  <div class="😂">
+    <div class="header non-post">
+      <button mat-icon-button [routerLink]="'/'"><mat-icon>keyboard_arrow_left</mat-icon></button>
+
+      <div style="font-weight: 500; font-size: min(5vw, 22px)">{{ user.username }}</div>
+
+      <button class="ellipsis" mat-button [mat-menu-trigger-for]="menu" [disabled]="!shouldDisplayMenu()">...</button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="onEditProfile()">Edit Profile</button>
+      </mat-menu>
+    </div>
+
+    <div class="info non-post">
+      <div class="profile-image-container">
+        <img src="{{ user.profileImageUrl }}" class="profile-image" alt="" *ngIf="user.profileImageUrl" />
+        <img src="/assets/grey_profile_img.jpg" class="profile-image" alt="" *ngIf="!user.profileImageUrl" />
+      </div>
+
+      <div class="follow-info non-post">
+        <div class="posts-info">
+          <h1 class="info-count">{{ posts.length }}</h1>
+          <h3 class="info-tag">Posts</h3>
+        </div>
+        <div class="followers" (click)="getFollowers()">
+          <h1 class="info-count">{{ user.followerCount }}</h1>
+          <h3 class="info-tag">Followers</h3>
+        </div>
+        <div class="followings" (click)="getFollowing()">
+          <h1 class="info-count">{{ user.followingCount }}</h1>
+          <h3 class="info-tag">Following</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="follow-button-container non-post" *ngIf="!following && !hideButton && !loading">
+      <button (click)="follow()" class="btn btn-primary btn-lg btn-block follow-button">Follow</button>
+    </div>
+
+    <div class="follow-button-container non-post" *ngIf="following && !hideButton && !loading">
+      <button (click)="unfollow()" class="btn btn-primary btn-lg btn-block follow-button">Unfollow</button>
+    </div>
+
+    <div class="bio non-post">
+      <h1 style="font-size: min(5vw, 22px)">
+        {{ user.name ? user.name : "Your name will display here." }}
+      </h1>
+      <h3 style="font-size: min(4vw, 18px)">
+        {{ user.bio ? user.bio : "Your bio will display here." }}
+      </h3>
+    </div>
+
+    <div class="posts-container">
+      <div
+        *ngFor="let post of posts; let i = index"
+        class="post"
+        [ngClass]="post.imageUrl === null ? 'null-image' : ''"
+        [ngClass]="i === posts.length - 1 && posts.length > 1 ? 'last-image' : ''"
+      >
+        <app-post *ngIf="post.imageUrl !== null" [post]="post" [user]="signedInUser"></app-post>
+      </div>
+    </div>
+  </div>
+</div>

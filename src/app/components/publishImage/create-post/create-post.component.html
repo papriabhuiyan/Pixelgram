@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="form-container">
+  <div class="post-card">
+
+    <div class="heading-cont">
+      <img class="logo" src="../../assets/pixelgram_logo.png" alt="" /><span class="line"></span>
+      <div class="form-heading">Create Post</div>
+    </div>
+
+    <form class="create-form" [formGroup]="createPostForm" data-test-id="createPostForm" (ngSubmit)="createPost()">
+
+      <div class="uploadImage">
+        <div class="choose-image-button-container">
+          <button class="btn btn-primary" (click)="openChooseImageDialog()">Choose Image</button>
+          <span
+          *ngIf="!preview && submitted"
+          class="form-error"
+          data-test-id="password"
+        >
+          *&nbsp;Image is Required
+        </span>
+        </div>
+
+        <div *ngIf="preview && preview.length > 0" class="imagePreview">
+          <img [src]="preview" class="preview" alt="" />
+      </div>
+
+      </div>
+      
+      <div class="div-description">
+        <textarea
+            class="descriptionArea"
+            placeholder="Description..."
+            type="text"
+            class="form-input"
+            [(ngModel)]="message"
+            formControlName="uploadDescription"
+            rows="7"
+            cols="70"
+            maxlength="255"
+            data-test-id="uploadDescription"
+        ></textarea>
+        <span
+        *ngIf="createPostForm.controls.uploadDescription.errors?.['required'] && submitted"
+        class="form-error-textarea"
+        data-test-id="password"
+        >
+        *&nbsp;Description is Required
+        </span>
+      </div>
+
+      <div class="buttons">
+        <button class="cancel btn-primary text-light btn-block uploadPost" (click)="onCancel()">Cancel</button>
+        <button type="submit" style="margin-left:15px" class="createPostBtn text-light btn-primary btn-lg btn-block uploadPost" type="submit">
+          <span>Create Post</span>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

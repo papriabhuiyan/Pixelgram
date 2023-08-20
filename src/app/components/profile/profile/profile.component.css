@@ -1,0 +1,206 @@
+.container-profile {
+  background-color: var(--background);
+  overflow-y: hidden;
+  height: calc(100% - 80px);
+}
+
+.😂 {
+  position: relative;
+  z-index: 5;
+  width: 45rem;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: min(5%, 40px);
+  overflow-y: overlay;
+  scrollbar-width: none;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  border: 2px solid var(--formBorder);
+  border-top: none;
+  border-bottom: none;
+}
+
+.😂::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.😂::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #a9a9a9bf;
+}
+
+.header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.info {
+  width: 100%;
+  height: min(150px, 25vw);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.follow-info {
+  width: calc(100% - min(150px, 25vw));
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.info-count {
+  font-weight: 600;
+  color: var(--darkGray);
+  margin-top: 15px;
+  font-size: min(6vw, 22px);
+}
+
+.info-tag {
+  margin-top: -15px;
+  font-size: min(3.5vw, 16px);
+}
+
+.posts-info {
+  text-align: center;
+}
+
+.followers {
+  text-align: center;
+}
+
+.followings {
+  text-align: center;
+}
+
+.followers:hover {
+  cursor: pointer;
+}
+
+.followings:hover {
+  cursor: pointer;
+}
+
+.bio {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+}
+
+.profile-image-container {
+  width: min(150px, 25vw);
+  height: min(150px, 25vw);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border: solid 2px var(--blueBtn);
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.bio {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.follow-button-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.follow-button {
+  width: 100%;
+  padding: 5px;
+  font-size: min(4vw, 16px);
+  border-radius: 3px;
+}
+
+.post {
+  width: 35rem;
+  height: 40rem;
+  max-height: 40rem;
+}
+
+.null-image {
+  display: none;
+}
+
+.last-image {
+  padding-bottom: 40px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 40px;
+  height: 40rem;
+  max-height: 40rem;
+}
+
+@media screen and (max-width: 650px) {
+  .container-profile {
+    width: 100vw;
+  }
+
+  .post {
+    width: 100%;
+  }
+
+  .posts-container {
+    width: 100%;
+  }
+  .😂 {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .header {
+    padding-top: 20px;
+  }
+
+  .non-post {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0px;
+  }
+
+  .info-count {
+    margin-bottom: 10px;
+  }
+
+  .info-tag {
+    margin-bottom: 10px;
+  }
+  .follow-info {
+    gap: 20px;
+  }
+}
+
+/* These styles dont get applied anymore probably cause of darkmode stuff */
+:host ::ng-deep .confirm-snackbar button {
+  color: #0d6efd !important;
+}
+:host ::ng-deep .delete-snackbar button {
+  color: #0d6efd !important;
+}

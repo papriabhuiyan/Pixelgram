@@ -1,0 +1,48 @@
+<div class="user-post-container">
+  <div class="user-info-container">
+    <app-user-info [post]="post" [user]="user"></app-user-info>
+  </div>
+  <div 
+    class="image-holder-container" 
+    (dblclick)="onPostDoubleClick()" 
+    (click)="toggleZoom()"
+    [ngStyle]="{ 'cursor': zoom ? 'zoom-out' : 'zoom-in' }"
+  >
+    <img
+      class="postImg"
+      src="{{ post.imageUrl }}"
+      alt="the user's post"
+      [ngStyle]="{ 'object-fit': zoom ? 'contain' : 'cover' }"
+      onerror="this.style.display='none'"
+    />
+  </div>
+  <div class="bottom-container">
+    <div class="like-comment-container">
+      <button class="favorite-button" (click)="postLikeAction()">
+        <mat-icon *ngIf="liked" style="color: red" [@heartBeatOnEnter]>favorite</mat-icon>
+        <mat-icon *ngIf="!liked">favorite_border</mat-icon>
+      </button>
+      <div id="likes-label">{{ post.numLikes }} {{ post.numLikes | i18nPlural: pluralMappings["like"] }}</div>
+      <div id="comments-label">{{ post.numComments }} {{ post.numComments | i18nPlural: pluralMappings["comment"] }}</div>
+    </div>
+
+    <div class="caption">
+      <p *ngIf="!messageTruncated">
+        <span id="username-label" (click)="onProfileClick(post.username)">{{ post.username }}</span
+        >{{ post.message }}
+        <a *ngIf="post.message.length > messageThreshold" id="more-button" (click)="expandMessage()">less</a>
+      </p>
+      <div *ngIf="messageTruncated" class="truncated-message">
+        <p>
+          <span id="username-label">{{ post.username }}</span>
+          {{ post.message | slice: 0:this.messageThreshold }}...
+          <a id="more-button" (click)="expandMessage()">more</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="comment-scroll">
+      <app-comments [post]="post" [user]="user"></app-comments>
+    </div>
+  </div>
+</div>

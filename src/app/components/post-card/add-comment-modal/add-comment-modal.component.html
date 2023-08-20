@@ -1,0 +1,29 @@
+<div class="edit-modal">
+  <span class="header">
+    <h1>Add Comments</h1>
+    <mat-icon class="close-icon" (click)="exit()">close</mat-icon>
+  </span>
+
+  <div class="edit-form">
+    <mat-form-field class="text-area-container" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        class="txt-area"
+        id="message"
+        [(ngModel)]="message"
+        placeholder="Enter your comment here"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="7"
+        cdkAutosizeMaxRows="7"
+        maxlength="255"
+        (keyup)="isTouched = true"
+      ></textarea>
+    </mat-form-field>
+    <!-- <textarea class="txt-area" id="message" rows="7" (keyup)="checkMessage()" [(ngModel)]="message" style="width: 100%;resize: none;" maxlength="255" placeholder="Enter your comment here"></textarea> -->
+    <div class="err-cont">
+      <div id="errorMessage" *ngIf="isTouched && message.length == 0" class="error">*Comment cannot be blank</div>
+      <button type="button" class="btn btn-primary btn-lg btn-block regLog" (click)="closeDialog()">Comment</button>
+    </div>
+  </div>
+</div>

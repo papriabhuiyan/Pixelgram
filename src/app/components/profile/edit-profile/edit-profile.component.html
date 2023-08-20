@@ -1,0 +1,92 @@
+<div class="edit-modal">
+  <span class="header">
+    <h1>
+      <strong style="font-weight: 500">{{ user.username }}</strong> - Edit Profile
+    </h1>
+    <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+  </span>
+
+  <div class="profile-edit">
+    <div class="image-form">
+      <div class="image-container">
+        <video
+          class="transformable"
+          [ngClass]="{ 'profile-image-small': !isCameraActive, 'profile-image-big': isCameraActive }"
+          [poster]="user.profileImageUrl !== null ? user.profileImageUrl : '/assets/grey_profile_img.jpg'"
+          autoplay
+          #video
+        ></video>
+        <canvas hidden #canvas class="profile-image-big"></canvas>
+
+        <div class="camera-controls">
+          <button mat-stroked-button color="primary" matTooltip="Take Picture" *ngIf="isCameraActive" (click)="onTakePicture()">
+            <mat-icon>photo_camera</mat-icon>
+          </button>
+          <button mat-stroked-button color="warn" matTooltip="Cancel" *ngIf="isCameraActive" (click)="onCancelCamera()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="edit-image" *ngIf="!isCameraActive">
+        <h4 style="font-weight: 500">Change Your Profile Picture</h4>
+        <mat-divider style="margin-bottom: 16px"></mat-divider>
+        <button
+          mat-stroked-button
+          color="primary"
+          matTooltip="Upload a picture from your device"
+          [disabled]="isCameraActive"
+          (click)="fileInput.click()"
+        >
+          <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput />
+          <mat-icon>upload</mat-icon>
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          style="margin-left: 10px"
+          matTooltip="Take a picture with your camera"
+          [disabled]="isCameraActive"
+          (click)="onEnableCamera()"
+        >
+          <mat-icon>photo_camera</mat-icon>
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          style="margin-left: 10px"
+          matTooltip="Delete your profile picture"
+          [disabled]="isCameraActive"
+          (click)="onDeletePicture()"
+        >
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="info-form" *ngIf="!isCameraActive">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="user.name" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bio</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="user.bio"
+          maxlength="255"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="7"
+          cdkAutosizeMaxRows="7"
+        ></textarea>
+        <mat-hint align="end">{{ user.bio?.length }}/255</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="end" style="margin-top: 40px" *ngIf="!isCameraActive">
+    <!-- mat-dialog-actions like a footer its kinda cool but still need to set margin so idk whatever-->
+    <button class="btn btn-primary btn-lg btn-block regLog" (click)="onSubmit()">Submit</button>
+  </mat-dialog-actions>
+</div>

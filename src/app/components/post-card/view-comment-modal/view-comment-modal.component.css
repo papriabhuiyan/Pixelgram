@@ -1,0 +1,21 @@
+.profImage {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+/* ::ng-deep .mat-dialog-container {
+  background-color: var(--postCard) !important;
+} */
+
+.comment-cont {
+  width: 100%;
+  display: flex;
+}
+.username-cont {
+  display: flex;
+  flex-direction: column;
+}
+.message-cont {
+  margin-left: 8px;
+}

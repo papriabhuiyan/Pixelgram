@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="form-container">
+    <div class="reg-card">
+      <div class="heading-cont">
+        <img class="logo" src="../../../../assets/pixelgram_logo.png" alt="" /><span class="line"></span>
+        <div class="form-heading">Login</div>
+      </div>
+      <form class="reg-form" [formGroup]="signinForm" (ngSubmit)="login()" data-test-id="signinForm">
+        <!-- <div class="inp"> -->
+          <input  placeholder="Username..." formControlName="userName" type="text" class="form-input" data-test-id="username" />
+          <span  class="form-error" *ngIf="signinForm.controls.userName.errors?.['required'] && submited">* Username is required</span>
+         
+        <!-- </div> -->
+        <!-- <div class="inp"> -->
+          <input data-test-id="password" placeholder="Password..." formControlName="password" type="password" class="form-input" (keydown)="setFalse()" (focus)="setFalse()"/>
+          <span  class="form-error" *ngIf="signinForm.controls.password.errors?.['required'] && submited">* Password is required</span>
+
+         
+        <!-- </div> -->
+        <p class="form-error-invalid" *ngIf="invalid">* Username or password incorrect</p>
+        <div class="buttons">
+            <a routerLink="/register" class="register regLog">Register</a>
+            <button type="submit" class="btn btn-primary btn-lg btn-block regLog">Login</button>
+        </div> 
+      </form>
+    </div>
+  </div>
